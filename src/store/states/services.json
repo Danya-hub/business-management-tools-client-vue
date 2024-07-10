@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "icon": "BellIcon",
+    "view_id": 21
+  },
+  {
+    "id": 2,
+    "icon": "ChatBubbleBottomCenterIcon",
+    "view_id": 9
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "name": "groups",
+    "view_type": "page",
+    "path": "/tool/groups",
+    "replace": true,
+    "content_view_id": 1
+  },
+  {
+    "id": 2,
+    "name": "tasks",
+    "view_type": "page",
+    "path": "/tool/tasks",
+    "replace": true,
+    "content_view_id": 2
+  },
+  {
+    "id": 3,
+    "name": "calendar",
+    "view_type": "modal",
+    "path": "/tool/calendar",
+    "replace": true,
+    "content_view_id": 3
+  },
+  {
+    "id": 4,
+    "name": "document",
+    "view_type": "page",
+    "path": "/tool/documents",
+    "replace": true,
+    "content_view_id": 4
+  },
+  {
+    "id": 5,
+    "name": "disk",
+    "view_type": "page",
+    "path": "/tool/disk",
+    "replace": true,
+    "content_view_id": 5
+  },
+  {
+    "id": 6,
+    "name": "crm",
+    "view_type": "page",
+    "path": "/tool/crm",
+    "replace": true,
+    "content_view_id": 6
+  },
+  {
+    "id": 7,
+    "name": "mail",
+    "view_type": "modal",
+    "path": "/tool/mail",
+    "replace": true,
+    "content_view_id": 7
+  },
+  {
+    "id": 8,
+    "name": "stream",
+    "view_type": "page",
+    "path": "/tool/stream",
+    "replace": true,
+    "content_view_id": 8
+  },
+  {
+    "id": 9,
+    "name": "chats",
+    "view_type": "modal",
+    "path": "/chats",
+    "replace": true,
+    "content_view_id": 9
+  },
+  {
+    "id": 10,
+    "name": "store",
+    "view_type": "page",
+    "path": "/tool/store",
+    "replace": true,
+    "content_view_id": 10
+  },
+  {
+    "id": 11,
+    "name": "marketing",
+    "view_type": "page",
+    "path": "/tool/marketing",
+    "replace": true,
+    "content_view_id": 11
+  },
+  {
+    "id": 12,
+    "name": "sites-and-markets",
+    "view_type": "page",
+    "path": "/tool/sites-and-markets",
+    "replace": true,
+    "content_view_id": 12
+  },
+  {
+    "id": 13,
+    "name": "b2e",
+    "view_type": "page",
+    "path": "/tool/b2e",
+    "replace": true,
+    "content_view_id": 13
+  },
+  {
+    "id": 14,
+    "name": "sign",
+    "view_type": "page",
+    "path": "/tool/sign",
+    "replace": true,
+    "content_view_id": 14
+  },
+  {
+    "id": 15,
+    "name": "bi",
+    "view_type": "page",
+    "path": "/tool/bi/dashboard",
+    "replace": true,
+    "content_view_id": 15
+  },
+  {
+    "id": 16,
+    "name": "company",
+    "view_type": "page",
+    "path": "/tool/company",
+    "replace": true,
+    "content_view_id": 16
+  },
+  {
+    "id": 17,
+    "name": "rpa",
+    "view_type": "page",
+    "path": "/tool/rpa",
+    "replace": true,
+    "content_view_id": 17
+  },
+  {
+    "id": 18,
+    "name": "settings",
+    "view_type": "page",
+    "path": "/tool/settings",
+    "replace": true,
+    "content_view_id": 18
+  },
+  {
+    "id": 19,
+    "name": "market",
+    "view_type": "modal",
+    "path": "/tool/market",
+    "replace": true,
+    "content_view_id": 19
+  },
+  {
+    "id": 20,
+    "name": "for-developers",
+    "view_type": "page",
+    "path": "/tool/for-developers",
+    "replace": true,
+    "content_view_id": 20
+  },
+  {
+    "id": 21,
+    "name": "notification",
+    "view_type": "modal",
+    "path": "/service/notifications",
+    "replace": true,
+    "content_view_id": 21
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "icon": "@heroicons/vue/24/outline/RectangleGroupIcon",
+    "text": "Совместная работа"
+  },
+  {
+    "id": 1,
+    "icon": "@heroicons/vue/24/outline/CubeIcon",
+    "text": "Приложения"
+  }
+]

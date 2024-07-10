@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "role": "user",
+    "first_name": "Даниїл",
+    "last_name": "Носулько",
+    "avatar": null,
+    "password": "12345678",
+    "email": "6694524@gmail.com",
+    "telephone": {
+      "id": 1,
+      "code": "+380",
+      "number": "951234567",
+      "country": "UA",
+      "length": 7
+    }
+  },
+  {
+    "id": 2,
+    "role": "user",
+    "first_name": "Kozerog",
+    "last_name": "123",
+    "avatar": null,
+    "password": "234567",
+    "email": "kozerog@gmail.com",
+    "telephone": {
+      "id": 1,
+      "code": "+380",
+      "number": "951234567",
+      "country": "UA",
+      "length": 7
+    }
+  },
+  {
+    "id": 3,
+    "first_name": "Admin",
+    "last_name": "Hacker228",
+    "avatar": null,
+    "password": "11111111",
+    "email": "admin@gmail.com",
+    "telephone": {
+      "id": 1,
+      "code": "+380",
+      "number": "951234567",
+      "country": "US",
+      "length": 7
+    }
+  }
+]

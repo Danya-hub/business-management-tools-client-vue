@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "code": "+380",
+    "country": "UA",
+    "length": 7
+  },
+  {
+    "id": 2,
+    "code": "+1",
+    "country": "US",
+    "length": 10
+  }
+]

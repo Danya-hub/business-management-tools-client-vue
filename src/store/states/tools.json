@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "icon": "UserGroupIcon",
+    "text": "Группы",
+    "view_id": 1,
+    "hidden": false,
+    "group_id": 1
+  },
+  {
+    "id": 2,
+    "icon": "CheckIcon",
+    "text": "Задачи и Проекты",
+    "view_id": 2,
+    "hidden": false,
+    "group_id": 1
+  },
+  {
+    "id": 3,
+    "icon": "CalendarIcon",
+    "text": "Календарь",
+    "view_id": 3,
+    "hidden": false,
+    "group_id": 1
+  },
+  {
+    "id": 4,
+    "icon": "DocumentTextIcon",
+    "text": "Документы Онлайн",
+    "view_id": 4,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 5,
+    "icon": "ServerIcon",
+    "text": "Диск",
+    "view_id": 5,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 6,
+    "icon": "Cog6ToothIcon",
+    "text": "CRM",
+    "view_id": 6,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 7,
+    "icon": "EnvelopeIcon",
+    "text": "Почта",
+    "view_id": 7,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 8,
+    "icon": "NewspaperIcon",
+    "text": "Лента",
+    "view_id": 8,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 9,
+    "icon": "ChatBubbleLeftRightIcon",
+    "text": "Мессенджер",
+    "view_id": 9,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 10,
+    "icon": "HomeModernIcon",
+    "text": "Складской учет",
+    "view_id": 10,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 11,
+    "icon": "ChartPieIcon",
+    "text": "Маркетинг",
+    "view_id": 11,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 12,
+    "icon": "ShoppingCartIcon",
+    "text": "Сайты и Магазины",
+    "view_id": 12,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 13,
+    "icon": "PencilSquareIcon",
+    "text": "КЭДО + Госключ",
+    "view_id": 13,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 14,
+    "icon": "HashtagIcon",
+    "text": "Подпись",
+    "view_id": 14,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 15,
+    "icon": "ChartBarIcon",
+    "text": "BI Конструктор",
+    "view_id": 15,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 16,
+    "icon": "BuildingStorefrontIcon",
+    "text": "Компания",
+    "view_id": 16,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 17,
+    "icon": "ComputerDesktopIcon",
+    "text": "Автоматизация",
+    "view_id": 17,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 18,
+    "icon": "AdjustmentsHorizontalIcon",
+    "text": "Настройки",
+    "view_id": 18,
+    "hidden": false,
+    "group_id": null
+  },
+  {
+    "id": 19,
+    "icon": "ShoppingBagIcon",
+    "text": "Маркет",
+    "view_id": 19,
+    "hidden": false,
+    "group_id": 2
+  },
+  {
+    "id": 20,
+    "icon": "CodeBracketIcon",
+    "text": "Разработчикам",
+    "view_id": 20,
+    "hidden": false,
+    "group_id": 2
+  }
+]

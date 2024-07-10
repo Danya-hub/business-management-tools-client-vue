@@ -1,0 +1,37 @@
+{
+  "name": "business-management-tools-client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@heroicons/vue": "^2.1.4",
+    "@types/grecaptcha": "^3.0.9",
+    "@types/node": "^20.14.6",
+    "@vee-validate/i18n": "^4.13.2",
+    "@vee-validate/yup": "^4.13.2",
+    "axios": "^1.7.2",
+    "country-flag-icons": "^1.5.12",
+    "pinia": "^2.1.7",
+    "tiny-emitter": "^2.1.0",
+    "vee-validate": "^4.13.2",
+    "vue": "^3.4.21",
+    "vue-i18n": "^9.13.1",
+    "vue-router": "^4.3.3",
+    "vue3-recaptcha-v2": "^2.0.2",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vue-tsc": "^2.0.6"
+  }
+}

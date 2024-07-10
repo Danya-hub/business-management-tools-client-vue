@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "locale_id": 1,
+    "group": "header",
+    "key": "search",
+    "text": "Искать сотрудников"
+  },
+  {
+    "id": 2,
+    "locale_id": 2,
+    "group": "header",
+    "key": "search",
+    "text": "Find employees"
+  },
+  {
+    "id": 3,
+    "locale_id": 3,
+    "group": "header",
+    "key": "search",
+    "text": "Шукати співробітників"
+  },
+  {
+    "id": 4,
+    "locale_id": 1,
+    "group": "auth",
+    "key": "email_required",
+    "text": "Требуется e-mail"
+  },
+  {
+    "id": 5,
+    "locale_id": 2,
+    "group": "auth",
+    "key": "email_required",
+    "text": "Email is required"
+  },
+  {
+    "id": 6,
+    "locale_id": 3,
+    "group": "auth",
+    "key": "email_required",
+    "text": "Необхіден e-mail"
+  },
+  {
+    "id": 7,
+    "locale_id": 1,
+    "group": "auth",
+    "key": "valid_email_format",
+    "text": "Введите правильный формат e-mail"
+  },
+  {
+    "id": 8,
+    "locale_id": 2,
+    "group": "auth",
+    "key": "valid_email_format",
+    "text": "Enter the correct email format"
+  },
+  {
+    "id": 9,
+    "locale_id": 3,
+    "group": "auth",
+    "key": "valid_email_format",
+    "text": "Введіть правильний формат e-mail"
+  },
+  {
+    "id": 10,
+    "locale_id": 1,
+    "group": "auth",
+    "key": "signup_agreement_required",
+    "text": "Подтвердите что вы соглащаетесь с нашими условиями"
+  },
+  {
+    "id": 11,
+    "locale_id": 2,
+    "group": "auth",
+    "key": "signup_agreement_required",
+    "text": "Confirm that you agree to our terms and conditions"
+  },
+  {
+    "id": 12,
+    "locale_id": 3,
+    "group": "auth",
+    "key": "signup_agreement_required",
+    "text": "Підтвердіть, що ви погоджуєтесь з нашими умовами"
+  },
+  {
+    "id": 13,
+    "locale_id": 1,
+    "group": "auth",
+    "key": "recaptcha",
+    "text": "Подтвердите что вы не робот"
+  },
+  {
+    "id": 14,
+    "locale_id": 2,
+    "group": "auth",
+    "key": "recaptcha",
+    "text": "Confirm that you are not a robot"
+  },
+  {
+    "id": 15,
+    "locale_id": 3,
+    "group": "auth",
+    "key": "recaptcha",
+    "text": "Підтвердіть, що ви не робот"
+  }
+]
