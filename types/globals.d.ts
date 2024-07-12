@@ -8,7 +8,7 @@ declare global {
 
 declare module 'yup' {
     interface StringSchema {
-        tel(errorMessage: string, code: () => string): StringSchema;
+        tel(errorMessage: string, code: () => string | undefined): StringSchema;
         telOrEmail(
             errorMessage: {
                 tel: string,
@@ -16,7 +16,7 @@ declare module 'yup' {
             },
             options: () => ({
                 isTel: boolean,
-                code: string,
+                code: string | undefined,
             }),
         ): StringSchema;
     }

@@ -1,21 +1,25 @@
 <script setup lang="ts">
+import {inject} from "vue";
+import {FormContext} from "vee-validate";
 import {ChevronLeftIcon} from "@heroicons/vue/24/outline";
 
 import PrevButton from "@/components/UI/ChildSwitcher/PrevButton.vue";
 import CodeInput from "@/components/UI/Form/CodeInput.vue";
-import {PropType} from "vue";
-import {FormMeta} from "vee-validate";
-import NextButton from "@/components/UI/ChildSwitcher/NextButton.vue";
 
-defineProps({
-  inputValue: {
-    type: String,
-    required: true,
-  },
-  meta: {
-    type: Object as PropType<FormMeta<object>>,
-    required: true,
-  },
+const form = inject<FormContext>('form');
+
+function handleClick(): void {
+  if (!form) {
+    return;
+  }
+
+  form.setValues({
+    emailOrTel: form.values.emailOrTel,
+  });
+}
+
+defineOptions({
+  inheritAttrs: false,
 });
 </script>
 
@@ -29,9 +33,9 @@ defineProps({
     Назад
   </PrevButton>
   <div>
-    <p class="mt-6">Мы отправили вам смс с кодом на почту <b>{{ inputValue }}</b>. Введите код в поле</p>
+    <p class="mt-6">Мы отправили вам смс с кодом на почту <b>{{ form?.values.emailOrTel }}</b>. Введите код в поле</p>
     <CodeInput
-        length="4"
+        :length="4"
         class="my-4"
     ></CodeInput>
     <div class="flex flex-wrap justify-center items-center">
@@ -45,11 +49,12 @@ defineProps({
       </PrevButton>
       <button
           type="submit"
+          @click="handleClick"
           :class="[
             'my-5 mx-4 text-white bg-green-500 font-medium rounded-full uppercase text-sm w-full sm:w-auto px-5 py-2.5 text-center',
-            !meta.valid ? 'opacity-60 cursor-auto' : 'hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-500',
+            !form?.meta.value.valid ? 'opacity-60 cursor-auto' : 'hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-500',
           ]"
-          :disabled="!meta.valid"
+          :disabled="!form?.meta.value.valid"
       >Авторизоваться
       </button>
     </div>

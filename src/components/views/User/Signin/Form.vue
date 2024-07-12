@@ -7,14 +7,29 @@ import ChildSwitcher, {ChildType} from "@/components/UI/ChildSwitcher/ChildSwitc
 import Channel from "@/components/views/User/Signin/Channel.vue";
 import ConfirmEmail from "@/components/views/User/Signin/ConfirmEmail.vue";
 import ConfirmTel from "@/components/views/User/Signin/ConfirmTel.vue";
+import {InputValueType as EmailOrTelInputValueType} from "@/components/UI/Form/EmailOrTelInput.vue";
 
 import {DataSubmittedSignupFormType, useUserStore} from "@/store/user.ts";
+import {provide} from "vue";
+import route from "@/route";
+
+export type FormStateType = EmailOrTelInputValueType;
 
 const userStore = useUserStore();
-const {handleSubmit, meta} = useForm();
+const form = useForm<FormStateType>({
+  initialValues: {
+    emailOrTel: '',
+    telCode: null,
+  },
+  keepValuesOnUnmount: true,
+});
 
-const submitForm = handleSubmit((data: unknown) => {
-  userStore.signin(data as DataSubmittedSignupFormType);
+const submitForm = form.handleSubmit((data: unknown) => {
+  userStore.signin(data as DataSubmittedSignupFormType)
+      .then(() => route.replace({
+        path: '/',
+        replace: true,
+      }));
 });
 
 const sections: ChildType[] = [
@@ -22,7 +37,6 @@ const sections: ChildType[] = [
   (props: object | undefined) => {
     if (!props
         || !('isTel' in props)
-        || !('inputValue' in props)
     ) {
       return ConfirmEmail;
     }
@@ -30,6 +44,9 @@ const sections: ChildType[] = [
     return props.isTel ? ConfirmTel : ConfirmEmail;
   },
 ];
+
+provide('form', form);
+
 </script>
 
 <template>
@@ -40,9 +57,6 @@ const sections: ChildType[] = [
     >
       <ChildSwitcher
           :children="sections"
-          v-bind="{
-            meta,
-          }"
       ></ChildSwitcher>
     </form>
     <router-link

@@ -20,7 +20,7 @@ const {errorMessage, handleChange} = useField(
     'code',
     string()
         .required(i18n.global.t('required_code'))
-        .min(Number(props.length), i18n.global.t('min_length_code')),
+        .min(props.length, i18n.global.t('min_length_code')),
 );
 const codeInputValue = ref<string[]>([]);
 
@@ -43,7 +43,7 @@ function handleInput(e: Event, inputIndex: number): void {
   <div class="mx-2">
     <div class="flex justify-center">
       <input
-          v-for="i in Number(length)"
+          v-for="i in length"
           type="text"
           @input="handleInput($event, i - 1)"
           :key="`${i}_cell`"

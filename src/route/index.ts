@@ -14,10 +14,16 @@ export const routes: RouteRecordRaw[] = [{
 }, {
     path: '/tool/:tool_name',
     name: 'tool',
+    meta: {
+        requiresAuth: true,
+    },
     component: () => import("@/components/views/User/Tools.vue")
 }, {
     path: '/service/:service_name',
     name: 'service',
+    meta: {
+        requiresAuth: true,
+    },
     component: () => import("@/components/views/User/Services.vue")
 }, {
     path: '/signin',
@@ -36,11 +42,27 @@ const router: Router = createRouter({
 });
 
 router.beforeEach((to: RouteLocationNormalized) => {
+    const path = to.path as string;
+
     emitter.emit('viewLoading', true);
 
-    if (!authPagePaths.includes(to.path as string) && !localStorage.getItem('isAuth')) {
+    const viewRequiresAuth: boolean = to.meta.requiresAuth as boolean;
+    const isAuth: boolean = authPagePaths.includes(path)
+        && !!Number(localStorage.getItem('user_id'));
+    const isGuest: boolean = !authPagePaths.includes(path)
+        && !Number(localStorage.getItem('user_id'))
+        && viewRequiresAuth;
+
+    if (isGuest) {
         router.replace({
             path: '/signin',
+            replace: true,
+        });
+    }
+
+    if (isAuth) {
+        router.replace({
+            path: '/',
             replace: true,
         });
     }

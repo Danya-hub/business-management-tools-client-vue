@@ -12,7 +12,7 @@
       "code": "+380",
       "number": "951234567",
       "country": "UA",
-      "length": 7
+      "length": 9
     }
   },
   {
@@ -28,7 +28,7 @@
       "code": "+380",
       "number": "951234567",
       "country": "UA",
-      "length": 7
+      "length": 9
     }
   },
   {
@@ -40,10 +40,10 @@
     "email": "admin@gmail.com",
     "telephone": {
       "id": 1,
-      "code": "+380",
+      "code": "+1",
       "number": "951234567",
       "country": "US",
-      "length": 7
+      "length": 10
     }
   }
 ]

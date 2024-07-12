@@ -91,7 +91,7 @@ defineExpose({
         {{ placeholder }}
       </label>
     </div>
-    <div v-if="canDisplayError">
+    <div v-if="canDisplayError && errorMessage">
       <InputError>{{ $t(errorMessage ?? '') }}</InputError>
     </div>
   </div>

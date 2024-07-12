@@ -2,12 +2,23 @@ import * as Yup from "yup";
 
 import {useTelephoneStore} from "@/store/telephones.ts";
 
-Yup.addMethod(Yup.string, 'tel', function (errorMessage: string, code: () => string) {
+Yup.addMethod(Yup.string, 'tel', function (errorMessage: string, code: () => string | undefined) {
     return this.test('tel', errorMessage,  function (number) {
         const telephoneStore = useTelephoneStore();
         const {path, createError} = this;
 
-        const foundTelFormat = telephoneStore.findBy('code', code());
+        const _code: string | undefined = code();
+
+        if (!_code) {
+            return (
+                createError({
+                    path,
+                    message: errorMessage,
+                })
+            );
+        }
+
+        const foundTelFormat = telephoneStore.findBy('code', _code);
 
         if (!foundTelFormat) {
             return (
@@ -38,7 +49,7 @@ Yup.addMethod(Yup.string, 'telOrEmail', function (
     },
     options: () => ({
         isTel: boolean,
-        code: string,
+        code: string | undefined,
     })
 ) {
     return this.test('telOrEmail', errorMessage, function (value) {
