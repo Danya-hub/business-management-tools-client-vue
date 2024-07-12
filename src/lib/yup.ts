@@ -1,16 +1,68 @@
 import * as Yup from "yup";
 
-Yup.addMethod(Yup.string, 'tel', function (errorMessage: string, getValue: () => string) {
-    return this.test('tel', errorMessage, async function (value) {
+import {useTelephoneStore} from "@/store/telephones.ts";
+
+Yup.addMethod(Yup.string, 'tel', function (errorMessage: string, code: () => string) {
+    return this.test('tel', errorMessage,  function (number) {
+        const telephoneStore = useTelephoneStore();
         const {path, createError} = this;
 
-        console.log(value, getValue())
+        const foundTelFormat = telephoneStore.findBy('code', code());
 
-        return (
-            createError({
+        if (!foundTelFormat) {
+            return (
+                createError({
+                    path,
+                    message: errorMessage,
+                })
+            );
+        }
+
+        if (foundTelFormat.length !== number?.length) {
+            return (
+                createError({
+                    path,
+                    message: errorMessage,
+                })
+            );
+        }
+
+        return true;
+    });
+});
+
+Yup.addMethod(Yup.string, 'telOrEmail', function (
+    errorMessage: {
+        tel: string,
+        email: string,
+    },
+    options: () => ({
+        isTel: boolean,
+        code: string,
+    })
+) {
+    return this.test('telOrEmail', errorMessage, function (value) {
+        const {
+            path,
+            createError
+        } = this;
+        const {
+            isTel,
+            code,
+        } = options();
+
+        if (isTel && code) {
+            return Yup.string().tel(errorMessage.tel, () => code).isValidSync(value)
+                || createError({
+                    path,
+                    message: errorMessage.tel
+                });
+        }
+
+        return Yup.string().email(errorMessage.email).isValidSync(value)
+            || createError({
                 path,
-                message: errorMessage,
-            })
-        );
+                message: errorMessage.email
+            });
     });
 });

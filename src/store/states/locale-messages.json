@@ -63,6 +63,27 @@
     "text": "Введіть правильний формат e-mail"
   },
   {
+    "id": 7,
+    "locale_id": 1,
+    "group": "auth",
+    "key": "valid_tel_format",
+    "text": "Введите правильный формат телефона"
+  },
+  {
+    "id": 8,
+    "locale_id": 2,
+    "group": "auth",
+    "key": "valid_tel_format",
+    "text": "Enter the correct telephone format"
+  },
+  {
+    "id": 9,
+    "locale_id": 3,
+    "group": "auth",
+    "key": "valid_tel_format",
+    "text": "Введіть правильний формат телефону"
+  },
+  {
     "id": 10,
     "locale_id": 1,
     "group": "auth",

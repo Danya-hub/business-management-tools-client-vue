@@ -28,5 +28,8 @@ export const useTelephoneStore = defineStore('telephones', {
                 this.error = e as Error;
             }
         },
+        findBy(telObjectKey: keyof TelephoneType, value: string): TelephoneType | undefined {
+            return this.items.find((item: TelephoneType) => item[telObjectKey] === value);
+        }
     }
 });

@@ -32,6 +32,7 @@ const isOpen = ref<boolean>(false);
 
 function handleSelect(selected: string): void {
   selectedOption.value = selected;
+  isOpen.value = false;
 
   emit('select', selected);
 }

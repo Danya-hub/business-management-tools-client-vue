@@ -1,39 +1,47 @@
 <script setup lang="ts">
-import {computed, ref, useAttrs} from "vue";
-import {object, string} from "yup";
+import {computed, ref, useAttrs, watch} from "vue";
+import {string} from "yup";
 
 import {i18n} from "@/hooks/useLang.ts";
 import Validation from "@/utils/Validation.ts";
-import {TelephoneType} from "@/store/types/TelephoneType";
 
 import FormInput from "@/components/UI/Form/FormInput.vue";
-import TelSelect, {MountStatesType} from "@/components/UI/Form/TelSelect/TelSelect.vue";
+import TelSelect, {MountStatesType} from "@/components/UI/Form/TelSelect.vue";
+import {TelephoneType} from "@/store/types/TelephoneType";
+import InputError from "@/components/UI/Form/InputError.vue";
 
 const attrs = useAttrs();
-const telCode = ref<string>('');
+
+const telCode = ref<TelephoneType | null>(null);
 const inputValue = ref<string>('');
+const inputErrorMessage = ref<string | undefined>(undefined);
+
 const isTel = computed(() => Validation.isTel(inputValue.value));
 
-const schema = computed(() => isTel
-    ? string()
-        .required(i18n.global.t('auth_tel_required'))
-        .tel(i18n.global.t('auth_valid_tel_format'), () => telCode.value)
-    : string()
-        .required(i18n.global.t('auth_email_required'))
-        .email(i18n.global.t('auth_valid_email_format'))
-);
+const emit = defineEmits<{
+  (e: 'changeTypeInput', isTel: boolean): void
+  (e: 'changeValue', value: string): void
+}>();
 
-function handleSelect(selected: TelephoneType) {
-  telCode.value = selected.code;
-}
-
-function handleChange(value: string) {
+function handleChange(value: string, errorMessage: string | undefined) {
   inputValue.value = value;
+  inputErrorMessage.value = errorMessage;
+
+  emit('changeValue', value);
 }
 
-function handleMountTelSelect(states: MountStatesType) {
-  telCode.value = states.defaultTel.code;
+function handleSelect(selected: TelephoneType): void {
+  telCode.value = selected;
 }
+
+
+function handleMountTelSelect(states: MountStatesType): void {
+  telCode.value = states.defaultTel;
+}
+
+watch(isTel, () => {
+  emit('changeTypeInput', isTel.value);
+});
 
 defineOptions({
   inheritAttrs: false,
@@ -41,24 +49,39 @@ defineOptions({
 </script>
 
 <template>
-  <div class="flex items-center">
-    {{ isTel }} {{ inputValue }}
-    <div v-show="isTel">
-      <TelSelect
-          class="me-3"
-          @select="handleSelect"
-          @mount="handleMountTelSelect"
-      ></TelSelect>
+  <div>
+    <div class="flex items-center">
+      <div v-show="isTel">
+        <TelSelect
+            class="me-3"
+            @select="handleSelect"
+            @mount="handleMountTelSelect"
+        ></TelSelect>
+      </div>
+      <div class="w-full overflow-hidden">
+        <FormInput
+            @change="handleChange"
+            name="emailOrTel"
+            :canDisplayError="false"
+            :schema="string()
+              .required(i18n.global.t('auth_tel_or_email_required'))
+              .telOrEmail({
+                email: i18n.global.t('auth_valid_email_format'),
+                tel: i18n.global.t('auth_valid_tel_format'),
+              },
+              () => ({
+                code: telCode!.code,
+                isTel: isTel,
+              }))"
+            textSize="text-md"
+            v-bind="Object.assign({}, attrs, isTel ? {
+              type: 'tel',
+            } : {
+              type: 'email',
+            })"
+        ></FormInput>
+      </div>
     </div>
-    <div class="w-full overflow-hidden">
-      <FormInput
-          @change="handleChange"
-          v-bind="attrs"
-          :schema="schema"
-          textSize="text-md"
-          :type="isTel ? 'tel' : 'email'"
-          :name="isTel ? 'tel' : 'email'"
-      ></FormInput>
-    </div>
+    <InputError class="mb-4">{{ $t(inputErrorMessage ?? '') }}</InputError>
   </div>
 </template>

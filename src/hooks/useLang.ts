@@ -62,8 +62,6 @@ export default function useLang() {
                         }
                     ))));
 
-            console.log(message)
-
             i18n.global.setLocaleMessage(newLocale, message);
             selected.value = foundAvailableLocale;
 

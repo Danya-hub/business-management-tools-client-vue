@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {PropType} from "vue";
+import {PropType, ref, watch} from "vue";
 import {useField} from "vee-validate";
 import {StringSchema} from "yup";
 
@@ -12,7 +12,6 @@ const props = defineProps({
   },
   schema: {
     type: Object as PropType<StringSchema>,
-    required: true,
   },
   name: {
     type: String,
@@ -25,20 +24,41 @@ const props = defineProps({
     type: String,
     default: 'text-sm',
   },
+  maxLength: {
+    type: Number,
+  },
+  canDisplayError: {
+    type: Boolean,
+    default: true,
+  },
 });
 
-const {value, errorMessage, handleChange} = useField(props.name, props.schema);
+const {value: inputValue, errorMessage, handleChange, validate } = useField(props.name, props.schema);
+const inputRef = ref<HTMLInputElement>();
 
 const emit = defineEmits<{
-  (e: 'change', value: string): void
+  (e: 'change', value: string, errorMessage: string | undefined): void,
 }>();
 
 function onChange(e: Event) {
   const target = e.target as HTMLInputElement;
 
   handleChange(target.value);
-  emit('change', target.value);
 }
+
+watch(inputValue, async () => {
+  await validate();
+
+  emit(
+      'change',
+      inputValue.value as string,
+      errorMessage.value,
+  );
+})
+
+defineExpose({
+  inputRef,
+});
 </script>
 
 <template>
@@ -48,6 +68,8 @@ function onChange(e: Event) {
     ]">
     <div>
       <input
+          :type="type"
+          ref="inputRef"
           :name="name"
           :id="name"
           :class="[
@@ -55,8 +77,9 @@ function onChange(e: Event) {
              errorMessage ? 'focus:border-red-600' : 'focus:border-green-600',
           ]"
           placeholder=" "
-          :value="value"
+          :value="inputValue"
           @input="onChange"
+          :maxlength="maxLength"
       />
       <label
           :for="name"
@@ -68,7 +91,9 @@ function onChange(e: Event) {
         {{ placeholder }}
       </label>
     </div>
-    <InputError>{{ $t(errorMessage ?? '') }}</InputError>
+    <div v-if="canDisplayError">
+      <InputError>{{ $t(errorMessage ?? '') }}</InputError>
+    </div>
   </div>
 </template>
 
