@@ -3,7 +3,7 @@ import {provide, ref} from "vue";
 
 import AsideServiceMenu from "@/components/partials/AsideServiceMenu.vue";
 import AsideToolsMenu from "@/components/partials/AsideToolsMenu.vue";
-import Header from "@/components/partials/Header.vue";
+import Header from "@/components/partials/Header/Header.vue";
 import Footer from "@/components/partials/Footer.vue";
 import Theme from "@/components/UI/Modal/Theme/Theme.vue";
 

@@ -15,26 +15,38 @@ export const routes: RouteRecordRaw[] = [{
     path: '/tool/:tool_name',
     name: 'tool',
     meta: {
-        requiresAuth: true,
+        forAuth: true,
     },
     component: () => import("@/components/views/User/Tools.vue")
 }, {
     path: '/service/:service_name',
     name: 'service',
     meta: {
-        requiresAuth: true,
+        forAuth: true,
     },
     component: () => import("@/components/views/User/Services.vue")
 }, {
     path: '/signin',
     name: 'signin',
+    meta: {
+        forGuest: true,
+    },
     component: () => import("@/components/views/User/Signin/Signin.vue")
 }, {
     path: '/signup',
     name: 'signup',
+    meta: {
+        forGuest: true,
+    },
     component: () => import("@/components/views/User/Signup/Signup.vue")
+}, {
+    path: '/forget-password',
+    name: 'forget-password',
+    meta: {
+        forGuest: true,
+    },
+    component: () => import("@/components/views/User/ForgetPassword/ForgetPassword.vue")
 }];
-export const authPagePaths: string[] = ['/signin', '/signup'];
 
 const router: Router = createRouter({
     routes,
@@ -42,25 +54,21 @@ const router: Router = createRouter({
 });
 
 router.beforeEach((to: RouteLocationNormalized) => {
-    const path = to.path as string;
-
     emitter.emit('viewLoading', true);
 
-    const viewRequiresAuth: boolean = to.meta.requiresAuth as boolean;
-    const isAuth: boolean = authPagePaths.includes(path)
-        && !!Number(localStorage.getItem('user_id'));
-    const isGuest: boolean = !authPagePaths.includes(path)
-        && !Number(localStorage.getItem('user_id'))
-        && viewRequiresAuth;
+    const blockAuthPages: boolean = !!Number(localStorage.getItem('user_id'))
+        && to.meta.forGuest as boolean;
+    const requireAuth: boolean = !Number(localStorage.getItem('user_id'))
+        && to.meta.forAuth as boolean;
 
-    if (isGuest) {
+    if (requireAuth) {
         router.replace({
             path: '/signin',
             replace: true,
         });
     }
 
-    if (isAuth) {
+    if (blockAuthPages) {
         router.replace({
             path: '/',
             replace: true,

@@ -6,6 +6,7 @@ import Or from "@/components/UI/Form/Or.vue";
 import ReCaptcha from "@/components/UI/Form/ReCaptcha.vue";
 import UsingSocialNetwork from "@/components/UI/Form/UsingSocialNetwork.vue";
 import NextButton from "@/components/UI/ChildSwitcher/NextButton.vue";
+import PasswordInput from "@/components/UI/Form/PasswordInput.vue";
 import EmailOrTelInput, {
   InputValueType as EmailOrTelInputValueType,
 } from "@/components/UI/Form/EmailOrTelInput.vue";
@@ -13,9 +14,7 @@ import {
   FormStateType as SigninFormStateType,
 } from "@/components/views/User/Signin/Form.vue";
 
-import {useUserStore} from "@/store/user.ts";
 import emitter from "@/utils/emitter.ts";
-import PasswordInput from "@/components/UI/Form/PasswordInput.vue";
 
 const props = defineProps({
   isTel: {
@@ -24,7 +23,6 @@ const props = defineProps({
   },
 })
 
-const userStore = useUserStore();
 const form = inject<FormContext<SigninFormStateType>>('form');
 
 function handleChangeTypeInput(newIsTel: boolean) {
@@ -71,7 +69,7 @@ function handleChangeInputValue(newValue: EmailOrTelInputValueType) {
           @changeValue="handleChangeInputValue"
       ></EmailOrTelInput>
       <PasswordInput></PasswordInput>
-      <!--      <ReCaptcha></ReCaptcha>-->
+      <ReCaptcha></ReCaptcha>
       <div class="flex flex-col items-center mt-4">
         <NextButton
             :class="[
@@ -83,7 +81,7 @@ function handleChangeInputValue(newValue: EmailOrTelInputValueType) {
         </NextButton>
         <div>
           <router-link
-              to="/forgot-password"
+              to="/forget-password"
               class="uppercase mb-2 block"
           >Забыли пароль?
           </router-link>

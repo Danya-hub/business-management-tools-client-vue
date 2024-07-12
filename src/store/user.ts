@@ -1,23 +1,14 @@
 import axios from "@/http/axios.ts";
 import {defineStore} from "pinia";
 
-import {StoredUserType} from "@/store/types/UserType";
-
-export type InputErrorType = {
-    input_id: string,
-    message: string,
-};
-
-export type UserStateType = {
-    data: StoredUserType | null,
-    error: InputErrorType | Error | null,
-}
-
-export type DataSubmittedSignupFormType = {
-    emailOrTel: string,
-    telCode: string | null,
-    password: string,
-};
+import {
+    DataSubmittedSigninFormType,
+    DataSubmittedSignupFormType,
+    DataSubmittedResetPasswordFormType,
+    InputErrorType,
+    StoredUserType,
+    UserStateType,
+} from "@/store/types/UserType";
 
 export const useUserStore = defineStore('user', {
     state(): UserStateType {
@@ -59,7 +50,7 @@ export const useUserStore = defineStore('user', {
                 this.error = e as Error;
             }
         },
-        async signin(payload: DataSubmittedSignupFormType): Promise<void> {
+        async signin(payload: DataSubmittedSigninFormType): Promise<void> {
             try {
                 const storedUser: StoredUserType | undefined = await axios.get('/src/store/states/users.json')
                     .then((res) => {
@@ -93,6 +84,9 @@ export const useUserStore = defineStore('user', {
         },
         async signup(payload: DataSubmittedSignupFormType): Promise<void> {
             console.log(payload);
+        },
+        async resetPassword(payload: DataSubmittedResetPasswordFormType): Promise<void> {
+            console.log(payload)
         }
     }
 });

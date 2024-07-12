@@ -24,7 +24,7 @@ const isInitialised = computed(() => viewIsLoaded && storeWasLoaded);
 
 <template>
   <router-view v-if="isInitialised"></router-view>
-  <Loader v-else>isLoading...</Loader>
+  <Loader v-else></Loader>
 </template>
 
 <style>
