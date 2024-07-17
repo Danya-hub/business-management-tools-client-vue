@@ -44,7 +44,7 @@ emitter.on('closeModal', (value: boolean) => {
     ></AsideToolsMenu>
     <div class="flex-1 text bg bg-opacity-30">
       <Header
-          :isOpened="asideIsOpened"
+          :asideIsOpened="asideIsOpened"
       ></Header>
       <main>
         <Theme></Theme>

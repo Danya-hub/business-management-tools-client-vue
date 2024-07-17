@@ -7,16 +7,12 @@ import type {OpenStateType} from "@/components/types/OpenStateType.ts";
 
 import Logo from "@/components/UI/Logo.vue";
 import Search from "@/components/UI/Form/Search.vue";
-import Time from "@/components/UI/Time/GlobalTime.vue";
-import Profile from "@/components/UI/User/Profile.vue";
 import SingleButton from "@/components/UI/Form/SingleButton.vue";
-
-import {useUserStore} from "@/store/user.ts";
-
-const userStore = useUserStore();
+import Tasks from "@/components/partials/Header/Tasks/Tasks.vue";
+import UserPanel from "@/components/partials/Header/UserPanel.vue";
 
 defineProps({
-  isOpened: {
+  asideIsOpened: {
     type: Object as PropType<OpenStateType>
   }
 });
@@ -24,8 +20,8 @@ defineProps({
 </script>
 
 <template>
-  <header class="flex justify-between pe-2 h-14 bg">
-    <router-link to="/" class="mx-4" v-if="!isOpened?.focus">
+  <header class="flex justify-between pe-2 h-14 bg my-1">
+    <router-link to="/" class="mx-4" v-if="!asideIsOpened?.focus">
       <Logo></Logo>
     </router-link>
     <Search
@@ -33,21 +29,17 @@ defineProps({
     ></Search>
     <div class="flex justify-between">
       <div class="grid gap-5 grid-flow-col text">
-        <button type="button">
-          <Time></Time>
-        </button>
-        <Profile
-            :user="userStore.data"
-        ></Profile>
+        <Tasks></Tasks>
+        <UserPanel></UserPanel>
         <div class="flex">
-          <SingleButton class="button bg-orange-400 me-2">
+          <SingleButton class="button bg-orange-400 me-2 self-center">
             <div class="bg-amber-600 p-1 rounded-full me-2">
               <RocketLaunchIcon class="w-4"></RocketLaunchIcon>
             </div>
             Купить
             <ChevronDownIcon class="arrow"></ChevronDownIcon>
           </SingleButton>
-          <SingleButton class="button bg-green-500">
+          <SingleButton class="button bg-green-500 self-center">
             Пригласить
             <ChevronDownIcon class="arrow"></ChevronDownIcon>
           </SingleButton>

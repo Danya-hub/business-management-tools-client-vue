@@ -24,8 +24,10 @@ function handleClickOutside(): void {
     <PointModal
         class="w-max"
         background="bg-white"
-        position="ms-3"
-        :isOpened="isOpened"
+        pointPos="ms-3"
+        pointDir="bottom"
+        modalPos="bottom-full"
+        :isOpenedShow="isOpened"
     >
       <ul class="flex flex-col flex-wrap max-h-32">
         <li v-for="option in localeOptions">

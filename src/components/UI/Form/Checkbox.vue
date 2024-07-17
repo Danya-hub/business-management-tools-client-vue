@@ -10,6 +10,10 @@
     },
     required: {
       type: Boolean,
+    },
+    checked: {
+      type: Boolean,
+      default: false,
     }
   });
 
@@ -25,7 +29,13 @@
 <template>
   <div>
     <label class="flex items-baseline">
-      <input :name="name" type="checkbox" @change="handleCheck" :required="required">
+      <input
+          :name="name"
+          type="checkbox"
+          @change="handleCheck"
+          :required="required"
+          :checked="checked"
+      >
       <p class="ms-2">{{value}}</p>
     </label>
   </div>

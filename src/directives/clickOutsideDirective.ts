@@ -1,4 +1,4 @@
-import { Directive } from "vue";
+import {Directive} from "vue";
 
 export type EventCallbackType = (event: Event) => void;
 
@@ -6,7 +6,7 @@ export interface IClickedOutsideElement extends HTMLElement {
     clickOutsideEvent: EventCallbackType,
 };
 
-const clickOutside : Directive<IClickedOutsideElement, EventCallbackType> = {
+const clickOutside: Directive<IClickedOutsideElement, EventCallbackType> = {
     beforeMount(el, binding): void {
         el.clickOutsideEvent = function (event: Event): void {
             const target = event.target as HTMLElement;

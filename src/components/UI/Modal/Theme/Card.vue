@@ -3,7 +3,7 @@ import {PropType} from "vue";
 
 import type {StoredThemeType} from "@/store/types/ThemeType.ts";
 
-const props = defineProps({
+defineProps({
   data: {
     type: Object as PropType<StoredThemeType>,
     required: true,
@@ -17,8 +17,6 @@ const emit = defineEmits<{
 function handleClick(data: StoredThemeType) {
   emit('select', data);
 }
-
-console.log(props.data.background);
 </script>
 
 <template>

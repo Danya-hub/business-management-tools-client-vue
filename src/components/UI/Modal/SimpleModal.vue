@@ -1,34 +1,47 @@
 <script setup lang="ts">
-import {XMarkIcon} from "@heroicons/vue/24/outline";
-
-import vClickOutside from "@/directives/clickOutsideDirective.ts";
 import emitter from "@/utils/emitter.ts";
+import CloseButton from "@/components/UI/Buttons/CloseButton.vue";
 
-defineProps({
+const props = defineProps({
+  closeEvent: {
+    type: String,
+    required: true,
+  },
   isOpened: {
     type: Boolean,
     required: true,
+  },
+  title: {
+    type: String,
+    default: '',
+  },
+  outsideIsAvailable: {
+    type: Boolean,
+  },
+  hasCloseButton: {
+    type: Boolean,
+    default: true,
   }
 });
 
 function handleClose() {
-  emitter.emit('closeModal', false);
+  emitter.emit(props.closeEvent, false);
 }
 </script>
 
 <template>
   <div
       v-show="isOpened"
-      class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 p-6 bg-white z-20"
-      v-click-outside="handleClose"
+      class="absolute pt-10 pb-8 px-6 bg-white z-20 rounded"
   >
-    <button
-        type="button"
-        class="absolute right-0 top-0 p-2 text-black"
+    <h4
+        class="absolute left-0 top-0 p-2"
+    >{{ title }}</h4>
+    <CloseButton
+        v-if="hasCloseButton"
         @click="handleClose"
-    >
-      <XMarkIcon class="w-6 h-6"></XMarkIcon>
-    </button>
+        class="absolute right-0 top-0"
+    ></CloseButton>
     <slot></slot>
   </div>
 </template>

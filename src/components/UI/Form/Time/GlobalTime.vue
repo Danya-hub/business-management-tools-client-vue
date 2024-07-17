@@ -10,7 +10,7 @@ useInterval((): void => {
 }, ms);
 
 const formattedTime: ComputedRef<string> = computed((): string => Intl.DateTimeFormat(
-    window.navigator.language,
+    localStorage.getItem('locale') ?? window.navigator.language,
     {
       hour: "numeric",
       minute: "numeric",
@@ -19,5 +19,5 @@ const formattedTime: ComputedRef<string> = computed((): string => Intl.DateTimeF
 </script>
 
 <template>
-  <span class="text-4xl">{{ formattedTime }}</span>
+  <span class="text-4xl whitespace-nowrap">{{ formattedTime }}</span>
 </template>

@@ -7,6 +7,7 @@ import storeInit from "@/store/initialize.ts";
 import {useThemeStore} from "@/store/themes.ts";
 
 import Loader from "@/components/UI/Loader.vue";
+import ScrollEvent from "@/components/events/ScrollEvent.vue";
 
 const viewIsLoaded = ref<boolean>(false);
 const storeWasLoaded = useLoadingPromises(storeInit());
@@ -23,8 +24,10 @@ const isInitialised = computed(() => viewIsLoaded && storeWasLoaded);
 </script>
 
 <template>
-  <router-view v-if="isInitialised"></router-view>
-  <Loader v-else></Loader>
+  <ScrollEvent>
+    <router-view v-if="isInitialised"></router-view>
+    <Loader v-else></Loader>
+  </ScrollEvent>
 </template>
 
 <style>
